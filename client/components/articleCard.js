@@ -12,6 +12,7 @@ export default function ArticleCard(props) {
     //send to favorites List
   };
 
+  //test
   return (
     <div class='article-card-container'>
       <div class='right'>
