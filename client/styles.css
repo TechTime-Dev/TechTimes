@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  position: relative;
+  background-color: #ebecee;
+  font-family: "Proxima Nova", "San Francisco", arial, sans-serif;
+  color: #1d1d1d;
+  height: 100%;
+  margin: 0;
+}
