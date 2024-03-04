@@ -5,14 +5,30 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 export default function ArticleCard(props) {
   //onclick link send to route for add to history
 
-  //onclick heart send to route add to favorites AND change color of heart
   const [isfavorite, setIsFavorite] = useState(false);
-  const handleFavorite = () => {
-    setIsFavorite((prev) => !prev);
-    //send to favorites List
+
+  //handle click on favorite icon to change icon and send to backend to be added to favorites list
+  const handleFavorite = async () => {
+    try {
+      //update favorite icon
+      setIsFavorite((prev) => !prev);
+      //send to favorites List
+      const response = await fetch('/favorite', {
+        method: postMessage,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          articleId: props.articleId,
+          userId: props.userId,
+          isfavorite: !isfavorite,
+        }),
+      });
+    } catch (error) {
+      console.log('Error', error);
+    }
   };
 
-  //test
   return (
     <div class='article-card-container'>
       <div class='right'>
