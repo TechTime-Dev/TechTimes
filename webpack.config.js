@@ -1,17 +1,12 @@
-import path from 'path';
-import HTMLWebpackPlugin from 'html-webpack-plugin';
-import { fileURLToPath } from 'url';
+import path from "path";
+import HTMLWebpackPlugin from "html-webpack-plugin";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default {
-  entry: './client/index.js',
-// const path = require("path");
-// const HTMLWebpackPlugin = require("html-webpack-plugin");
-
-// module.exports = {
-//   entry: "./client/index.js",
+  entry: "./client/index.js",
   output: {
     publicPath: "/",
     path: path.join(__dirname, "/dist"),
@@ -39,13 +34,7 @@ export default {
       {
         test: /.(css|scss)$/,
         exclude: /node_modules/,
-        // use: {
-        //   loader: ["style-loader", "css-loader", "postcss-loader"],
-        //   options: {
-        //     modules: true
-        //   },
-        // },
-         use: ["style-loader", "css-loader", "postcss-loader"]
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
@@ -62,6 +51,3 @@ export default {
     historyApiFallback: true,
   },
 };
-
-
-  // "type": "module",
