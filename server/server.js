@@ -1,6 +1,6 @@
 import path from 'path';
 import express from 'express';
-require('dotenv').config();
+import 'dotenv/config'
 import cors from 'cors';
 const app = express();
 import pkg from 'pg';
