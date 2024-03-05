@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently \"nodemon ./server/server.js\" \"webpack-dev-server --mode development --open --hot\"",
@@ -20,6 +21,8 @@
   "dependencies": {
     "@mui/x-charts": "^6.19.1",
     "@reduxjs/toolkit": "^2.0.1",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "bootstrap": "^5.3.2",
     "concurrently": "^8.2.2",
     "cors": "^2.8.5",
@@ -30,6 +33,7 @@
     "mongodb": "^6.3.0",
     "mongoose": "^8.1.0",
     "nodemon": "^3.0.2",
+    "pg": "latest",
     "postcss-cli": "^11.0.0",
     "postcss-loader": "^8.1.1",
     "react": "^18.2.0",
@@ -40,6 +44,8 @@
     "react-router-dom": "^6.21.3",
     "sass": "^1.70.0",
     "sass-loader": "^14.0.0",
+    "sequelize": "^6.37.1",
+    "sqlite3": "^5.1.7",
     "style-loader": "^3.3.4",
     "supertest": "^6.3.4"
   },
