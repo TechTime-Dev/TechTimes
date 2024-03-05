@@ -1,14 +1,13 @@
 import path from 'path';
 import express from 'express';
-import 'dotenv/config'
+import 'dotenv/config';
 import cors from 'cors';
 const app = express();
-import pkg from 'pg';
-const { Pool } = pkg;
 import authenticationRouter from './routers/authenticationRouter.js';
 import getNewsRouter from './routers/getNewsRouter.js';
 import listsRouter from './routers/listsRouter.js';
 import { fileURLToPath } from 'url';
+import pool from './db.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -20,20 +19,6 @@ const corsOptions = {
   credentials: true,
   optionSuccessStatus: 200,
 };
-
-const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATABASE}`;
-
-const pool = new Pool({ connectionString: connectionString });
-
-console.log('attempting to connect')
-pool
-  .connect()
-  .then((client) => {
-    console.log('Connected to the database');
-  })
-  .catch((err) => {
-    console.error('Error connecting to database', err);
-  });
 
 app.use(cors(corsOptions));
 
