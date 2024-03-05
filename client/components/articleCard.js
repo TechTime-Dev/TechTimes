@@ -41,7 +41,6 @@ export default function ArticleCard(props) {
           userId: props.userId,
         }),
       });
-      I;
       setLinkClicked(true);
     } catch (error) {
       console.log('Error', error);

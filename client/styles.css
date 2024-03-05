@@ -41,7 +41,7 @@ body {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  margin: 5px
+  margin: 5px;
 }
 
 .article-image {
@@ -63,5 +63,6 @@ body {
 }
 
 .clicked {
-  color: #7f7f7f;
+  /* color: #7f7f7f; */
+  color: red;
 }
