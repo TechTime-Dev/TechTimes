@@ -1,7 +1,7 @@
 import path from 'path';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 
-module.exports = {
+export default {
   entry: './client/index.js',
   output: {
     publicPath: '/',
