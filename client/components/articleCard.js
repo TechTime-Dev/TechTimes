@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import FavoriteBoarderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBoarderIcon from '@mui/icons-material/FavoriteBorder.js';
+import FavoriteIcon from '@mui/icons-material/Favorite.js';
 
 export default function ArticleCard(props) {
   console.log('Image prop:', props.img); // Log the img prop

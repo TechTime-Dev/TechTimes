@@ -3,7 +3,7 @@ import { Routes, Route, Outlet } from "react-router-dom";
 import NavBar from "./components/NavBar.jsx";
 import FavoritePage from "./components/FavoritePage.jsx";
 import "./styles.css";
-import ArticleCard from "./components/articleCard";
+// import ArticleCard from "./components/articleCard.js";
 import ArticleContainer from "./components/articleContainer.js";
 
 const NotFound = () => <h1>404 Page not found</h1>;

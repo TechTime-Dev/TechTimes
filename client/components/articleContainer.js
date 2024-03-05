@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import ArticleCard from './articleCard';
-import mockArticles from './mockData'; // Import mock data
+import ArticleCard from './articleCard.js';
+import mockArticles from './mockData.js'; // Import mock data
 
 export default function ArticleContainer() {
   //   const [articles, setArticles] = useState([]);
