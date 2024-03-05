@@ -1,4 +1,6 @@
 const getNewsController = {};
+import newsAPI from 'newsapi';
+const apiKey = new newsAPI('210a676b710347d48864b72c5f78bd3c');
 
 const date = new Date();
 const today = date.toLocaleDateString();

@@ -4,7 +4,7 @@ import pool from '../db.js';
 
 const authenticationController = {};
 
-//USERNAME AND PASSWORK LOGIN FUNCTIONALITY
+//USERNAME AND PASSWORD LOGIN FUNCTIONALITY
 authenticationController.login = async (req, res, next) => {
   console.log('---> ENTERING AUTH LOGIN CONTROLLER <---');
   try {
@@ -30,29 +30,29 @@ authenticationController.login = async (req, res, next) => {
       return res.status(401).send({
         message: 'Login Failed. Incorrect Password.',
         error: error,
+        login: false,
       });
     }
     console.log('Welcome to Tech Times!');
 
     // Generate Json Web Token
-    const token = jwt.sign({ userId: user.id }, 'your_jwt_secret', { expiresIn: '2h' });
+    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '2h' });
         
     // Send back the token and user info
     res.status(200).send({ 
       message: 'Login successful!',
       token: token,
-      user: { id: user.id, username: user.username } 
+      user: { id: user.id, username: user.username },
     });
 
-    // Redirect to the homepage now???
+    // not sure if this will work...
+    res.locals.login = true;
 
   } catch (error) {
     console.error('Error in Auth Login Controller', error);
     res.status(500).send('Internal Server Error');
   }
 };
-
-
 
 
 // CREATE NEW USER FUNCTIONALITY
@@ -65,7 +65,7 @@ authenticationController.createNewUser = async (req, res) => {
     const existingUser = await pool.query(userExistsQuery, [username]);
 
     if (existingUser.rows.length > 0) {
-      return res.status(500).send('Username already exists');
+      return res.status(500).send('Username already exists! Please choose another one.');
     }
 
     // Hash the new password for security
@@ -77,16 +77,16 @@ authenticationController.createNewUser = async (req, res) => {
     await pool.query(insertUserQuery, [username, hashedPassword]);
 
     res.status(200).send('User created successfully');
-    // add a redirect to /homepage here???
+    
+    // not sure is this is the right thing to put here...
+    res.locals.createUser = true;
+
+
   } catch (error) {
     console.error('Error in createNewUser Controller:', error);
     res.status(400).send('Error in creating new user');
   }
 };
-
-
-
-
 
 
 export default authenticationController;
