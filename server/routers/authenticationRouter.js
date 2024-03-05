@@ -1,6 +1,6 @@
 import authenticationController from '../controllers/authenticationController';
 import express from 'express';
-const authenticationRouter = express.Router();
+const router = express.Router();
 
 router('/', authenticationController.login, (req, res) => {
   console.log('---> ENTERING AUTH LOGIN ROUTER <---');
