@@ -6,6 +6,7 @@ export default function ArticleCard(props) {
   //onclick link send to route for add to history
 
   const [isfavorite, setIsFavorite] = useState(false);
+  const [linkClicked, setLinkClicked] = useState(false);
 
   //handle click on favorite icon to change icon and send to backend to be added to favorites list
   const handleFavorite = async () => {
@@ -29,22 +30,49 @@ export default function ArticleCard(props) {
     }
   };
 
+  const handleHistory = async () => {
+    //send to history list
+    try {
+      const response = await fetch('/history', {
+        method: postMessage,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          articleId: props.articleId,
+          userId: props.userId,
+        }),
+      });
+      setLinkClicked(true);
+    } catch (error) {
+      console.log('Error', error);
+    }
+  };
+
   return (
-    <div class='article-card-container'>
-      <div class='right'>
-        <p class='article-image'>Image</p>
+    <div className='article-card-container'>
+      <div className='right'>
+        <p className='article-image'>Image</p>
         {/* <img src={props.img} /> */}
         {isfavorite ? (
-          <FavoriteIcon onClick={handleFavorite} />
+          <FavoriteIcon className='favorite-icon' onClick={handleFavorite} />
         ) : (
-          <FavoriteBoarderIcon onClick={handleFavorite} />
+          <FavoriteBoarderIcon
+            className='favorite-icon'
+            onClick={handleFavorite}
+          />
         )}
       </div>
       <div class='article-card'>
         <p>Title: {props.title}</p>
         <p>Author: {props.author}</p>
         <p>Date: {props.date}</p>
-        <p>Link: {props.link}</p>
+        <p
+          className={linkClicked ? 'link clicked' : 'link'}
+          onClick={handleHistory}
+        >
+          Link: {props.link}
+        </p>
       </div>
     </div>
   );
