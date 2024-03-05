@@ -31,6 +31,7 @@
     "mongodb": "^6.3.0",
     "mongoose": "^8.1.0",
     "nodemon": "^3.0.2",
+    "pg": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-google-charts": "^4.0.1",
@@ -40,8 +41,7 @@
     "sass": "^1.70.0",
     "sass-loader": "^14.0.0",
     "style-loader": "^3.3.4",
-    "supertest": "^6.3.4",
-    "pg": "latest"
+    "supertest": "^6.3.4"
   },
   "devDependencies": {
     "@babel/core": "^7.23.6",

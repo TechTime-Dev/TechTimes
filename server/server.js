@@ -20,13 +20,15 @@ const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_P
 
 const pool = new Pool({ connectionString: connectionString });
 
-pool.connect((err, client) => {
-  if (err) {
-      console.error('Error connecting to database', err);
-      return;
-  }
-  console.log('Connected to the database');
-});
+console.log('attempting to connect')
+pool
+  .connect()
+  .then((client) => {
+    console.log('Connected to the database');
+  })
+  .catch((err) => {
+    console.error('Error connecting to database', err);
+  });
 
 app.use(cors(corsOptions));
 
