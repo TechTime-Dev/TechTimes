@@ -24,7 +24,7 @@ const createTablesQuery = `
 
   CREATE TABLE IF NOT EXISTS articles (
     articleID SERIAL PRIMARY KEY,
-    url VARCHAR (255) NOT NULL
+    url VARCHAR (255) NOT NULL,
     author VARCHAR(255) NOT NULL,
     publishDate VARCHAR(255) NOT NULL,
     keyword VARCHAR(255) NOT NULL
