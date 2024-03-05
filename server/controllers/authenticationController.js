@@ -9,9 +9,13 @@ authenticationController.login = async (req, res, next) => {
   console.log('---> ENTERING AUTH LOGIN CONTROLLER <---');
   try {
     const { username, password } = req.body;
-    pool.query(
-      `SELECT EXISTS (SELECT username FROM users WHERE username = ${username})`);
-
+    if (pool.query
+      (`SELECT EXISTS (SELECT username FROM users WHERE username = ${username})`) &&
+      (`SELECT EXISTS (SELECT password FROM users WHERE password = ${password})`)) {
+      console.log('Welcome to Tech Times!')
+    } else {
+      
+    }
     // if it doesnt exist, it sends and error
     if (!user) {
       return res.status(401).send({
