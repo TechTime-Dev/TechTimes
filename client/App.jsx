@@ -12,7 +12,6 @@ const Layout = () => {
   return (
     <>
       <NavBar />
-      <ArticleContainer/>
       <Outlet />
     </>
   );
