@@ -1,5 +1,5 @@
-import favoriteController from '../controllers/favoriteController';
-import historyController from '../controllers/historyController';
+import favoriteController from '../controllers/favoriteController.js';
+import historyController from '../controllers/historyController.js';
 import express from 'express';
 const router = express.Router();
 

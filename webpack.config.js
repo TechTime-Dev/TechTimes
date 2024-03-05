@@ -1,7 +1,11 @@
 import path from 'path';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
+import { fileURLToPath } from 'url';
 
-module.exports = {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default {
   entry: './client/index.js',
   output: {
     publicPath: '/',

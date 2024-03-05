@@ -3,10 +3,15 @@ import express from 'express';
 require('dotenv').config();
 import cors from 'cors';
 const app = express();
-import { Pool } from 'pg';
-import authenticationRouter from './routers/authenticationRouter';
-import getNewsRouter from './routers/getNewsRouter';
-import listsRouter from './routers/listsRouter';
+import pkg from 'pg';
+const { Pool } = pkg;
+import authenticationRouter from './routers/authenticationRouter.js';
+import getNewsRouter from './routers/getNewsRouter.js';
+import listsRouter from './routers/listsRouter.js';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT;
 
@@ -22,8 +27,8 @@ const pool = new Pool({ connectionString: connectionString });
 
 pool.connect((err, client) => {
   if (err) {
-      console.error('Error connecting to database', err);
-      return;
+    console.error('Error connecting to database', err);
+    return;
   }
   console.log('Connected to the database');
 });
