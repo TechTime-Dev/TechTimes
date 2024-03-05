@@ -18,16 +18,21 @@ const NavBar = () => {
         <div classname="nav-div flex justify-between items-center">
           <Link
             to="/"
-            className="text-black text-3xl hover:text-gray-300 font-ptsans ml-6"
+            className="text-black text-3xl hover:text-gray-300 font-ptsans"
           >
             News Feed
           </Link>
           <Link
             to="/favorite"
-            className="text-black text-3xl hover:text-gray-300 font-ptsans ml-6"
+            className="text-black text-3xl hover:text-gray-300 font-ptsans ml-40"
           >
             Favorites
           </Link>
+        </div>
+        <div>
+          <button className="bg-transparent text-black  rounded-md font-ptsans text-3xl ml-6">
+            Log out
+          </button>
         </div>
       </div>
     </nav>
