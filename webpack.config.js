@@ -7,11 +7,11 @@ const __dirname = path.dirname(__filename);
 
 export default {
   entry: './client/index.js',
-const path = require("path");
-const HTMLWebpackPlugin = require("html-webpack-plugin");
+// const path = require("path");
+// const HTMLWebpackPlugin = require("html-webpack-plugin");
 
-module.exports = {
-  entry: "./client/index.js",
+// module.exports = {
+//   entry: "./client/index.js",
   output: {
     publicPath: "/",
     path: path.join(__dirname, "/dist"),
@@ -39,7 +39,13 @@ module.exports = {
       {
         test: /.(css|scss)$/,
         exclude: /node_modules/,
-        use: ["style-loader", "css-loader", "postcss-loader"],
+        // use: {
+        //   loader: ["style-loader", "css-loader", "postcss-loader"],
+        //   options: {
+        //     modules: true
+        //   },
+        // },
+         use: ["style-loader", "css-loader", "postcss-loader"]
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
@@ -56,3 +62,6 @@ module.exports = {
     historyApiFallback: true,
   },
 };
+
+
+  // "type": "module",
