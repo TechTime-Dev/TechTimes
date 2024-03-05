@@ -3,7 +3,7 @@ import FavoriteBoarderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 export default function ArticleCard(props) {
-  //onclick link send to route for add to history
+  console.log('Image prop:', props.img); // Log the img prop
 
   const [isfavorite, setIsFavorite] = useState(false);
   const [linkClicked, setLinkClicked] = useState(false);
@@ -15,7 +15,7 @@ export default function ArticleCard(props) {
       setIsFavorite((prev) => !prev);
       //send to favorites List
       const response = await fetch('/favorite', {
-        method: postMessage,
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -34,7 +34,7 @@ export default function ArticleCard(props) {
     //send to history list
     try {
       const response = await fetch('/history', {
-        method: postMessage,
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -52,8 +52,8 @@ export default function ArticleCard(props) {
   return (
     <div className='article-card-container'>
       <div className='right'>
-        <p className='article-image'>Image</p>
-        {/* <img src={props.img} /> */}
+        {/* <p className='article-image'>Image</p> */}
+        <img src={props.img} className='article-image' />
         {isfavorite ? (
           <FavoriteIcon className='favorite-icon' onClick={handleFavorite} />
         ) : (
@@ -63,16 +63,18 @@ export default function ArticleCard(props) {
           />
         )}
       </div>
-      <div class='article-card'>
-        <p>Title: {props.title}</p>
-        <p>Author: {props.author}</p>
-        <p>Date: {props.date}</p>
+      <div className='article-card'>
         <p
           className={linkClicked ? 'link clicked' : 'link'}
           onClick={handleHistory}
         >
-          Link: {props.link}
+          Title: {props.title}
         </p>
+        <p>
+          Author: {props.author}, <i> {props.source}</i>
+        </p>
+        <p>Date: {props.date}</p>
+        <p>{props.description && <p>Description: {props.description}</p>}</p>
       </div>
     </div>
   );
