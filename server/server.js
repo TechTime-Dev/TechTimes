@@ -1,35 +1,53 @@
-const path = require("path");
-const express = require("express");
-require("dotenv").config();
-const cors = require("cors");
+import path from 'path';
+import express from 'express';
+require('dotenv').config();
+import cors from 'cors';
 const app = express();
+import { Pool } from 'pg';
+import authenticationRouter from './routers/authenticationRouter';
+import getNewsRouter from './routers/getNewsRouter';
+import listsRouter from './routers/listsRouter';
 
 const PORT = process.env.PORT;
 
 const corsOptions = {
-  origin: "*",
+  origin: '*',
   credentials: true,
   optionSuccessStatus: 200,
 };
+
+const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATABASE}`;
+
+const pool = new Pool({ connectionString: connectionString });
+
+pool.connect((err, client) => {
+  if (err) {
+      console.error('Error connecting to database', err);
+      return;
+  }
+  console.log('Connected to the database');
+});
 
 app.use(cors(corsOptions));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  return res
-    .status(200)
-    .sendField(path.join(__dirname, "../client/index.html"));
+app.use('/lists', listsRouter);
+app.use('/getNews', getNewsRouter);
+app.use('/authentication', authenticationRouter);
+
+app.get('/', (req, res) => {
+  return res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
 });
 
-app.use("*", (req, res) => res.status(404).send("Page not found"));
+app.use('*', (req, res) => res.status(404).send('Page not found'));
 
 app.use((err, req, res, next) => {
   const defaultErr = {
-    log: "Express error handler caught an unknown middlware error",
+    log: 'Express error handler caught an unknown middlware error',
     status: 500,
-    message: { err: "An error occured" },
+    message: { err: 'An error occured' },
   };
   const errorObj = Object.assign({}, defaultErr, err);
   console.log(errorObj);
