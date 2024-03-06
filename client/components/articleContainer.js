@@ -4,6 +4,7 @@ import mockArticles from './mockData.js'; // Import mock data
 
 export default function ArticleContainer() {
   const [articles, setArticles] = useState([]);
+  
 
   useEffect(() => {
     fetch('http://localhost:3000/getNews')
@@ -21,18 +22,19 @@ export default function ArticleContainer() {
 
   return (
     <div className='article-container'>
-      {articles.map((article) => (
+      {articles.map((article, index) => (
         <ArticleCard
-          key={article.id}
+          key={index}
           title={
-            <a href={article.link} target='_blank' rel='noopener noreferrer'>
-              {article.title}
+            <a href={article.url} target='_blank' rel='noopener noreferrer'>
+                {article.title}
             </a>
           }
-          author={article.author}
-          source={article.source}
-          date={article.date}
-          img={article.img}
+        //   author={article.author}
+          source={article.source.name}
+          date={article.publishedAt
+          }
+          img={article.urlToImage}
           description={article.description}
         />
       ))}
