@@ -30,7 +30,7 @@ body {
 }
 
 .article-card {
-  background-color: #d3d3d3;
+  background-color: #e0e0e0;
   width: 90%;
   border-radius: 10px;
   padding: 10px;
@@ -45,8 +45,11 @@ body {
 }
 
 .article-image {
-  height: 100px;
-  width: 100px;
+  object-fit: cover;
+  width: 100%;
+  max-height: 100px;
+  min-width: 170px;
+  max-width: 170px;
   padding: 5px;
   border-radius: 10px;
   vertical-align: top;
@@ -58,11 +61,16 @@ body {
 }
 
 .link {
-  /* font-size: 14px; */
+  font-size: 1.25rem;
+  font-weight: bold;
   cursor: pointer;
 }
 
 .clicked {
-  /* color: #7f7f7f; */
-  color: red;
+  color: #7f7f7f;
+  /* color: darkgray; */
+}
+
+.contributor {
+  font-size: 1.1rem;
 }

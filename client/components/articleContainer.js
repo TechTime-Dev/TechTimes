@@ -33,14 +33,22 @@ export default function ArticleContainer() {
           key={index}
           title={
             <a href={article.url} target='_blank' rel='noopener noreferrer'>
-              {article.title}
+            {article.title.split(' - ')[0]}
             </a>
           }
-          //   title= {article.title}
-          //   author={article.author}
+          //* line 40
+          author={article.author ? article.author : ''}
           source={article.source.name}
-          date={article.publishedAt}
-          img={article.urlToImage}
+          //* line 43
+          date={new Date(article.publishedAt).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            second: 'numeric',
+            timeZoneName: 'short',
+          })}          img={article.urlToImage}
           description={article.description}
         />
       ))}
