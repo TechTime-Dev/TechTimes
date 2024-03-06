@@ -6,10 +6,10 @@ export default function ArticleContainer() {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    fetch('/getNews')
+    fetch('http://localhost:3000/getNews')
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        console.log('line 12', data);
         setArticles(data.articles);
       })
       .catch((error) => {
@@ -17,7 +17,7 @@ export default function ArticleContainer() {
       });
   }, []);
 
-  console.log(articles);
+//   console.log(articles);
 
   return (
     <div className='article-container'>
