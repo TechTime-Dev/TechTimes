@@ -91,11 +91,11 @@ export default function ArticleCard(props) {
         >
           {props.title}
         </p>
-        <p>
-          <i> {props.source}</i>
+        <p className="contributor">
+          {props.author} <i> {props.source}</i>
         </p>
-        <p>{props.date}</p>
-        <p>{props.description && <p>{props.description}</p>}</p>
+        <p>Date Published: {props.date}</p>
+        <p>{props.description && <p>Description: {props.description}</p>}</p>
       </div>
     </div>
   );

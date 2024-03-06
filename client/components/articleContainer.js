@@ -7,7 +7,6 @@ import { updateSearchArticles } from "../redux/articleSlice.js";
 
 export default function ArticleContainer() {
   const dispatch = useDispatch();
-  // const [articles, setArticles] = useState([]);
   const articlesArray = useSelector((state) => state.articles.searchArticles);
 
   useEffect(() => {
@@ -24,8 +23,6 @@ export default function ArticleContainer() {
       });
   }, []);
 
-  //   console.log(articles);
-
   return (
     <div className="article-container max-w-[1600px] mx-auto justify-center items-center h-screen pl-8">
       {articlesArray.map((article, index) => (
@@ -33,13 +30,22 @@ export default function ArticleContainer() {
           key={index}
           title={
             <a href={article.url} target="_blank" rel="noopener noreferrer">
-              {article.title}
+              {article.title.split(" - ")[0]}
             </a>
           }
-          //   title= {article.title}
-          //   author={article.author}
+          //* line 40
+          author={article.author ? article.author : ""}
           source={article.source.name}
-          date={article.publishedAt}
+          //* line 43
+          date={new Date(article.publishedAt).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+            timeZoneName: "short",
+          })}
           img={article.urlToImage}
           description={article.description}
         />
