@@ -15,7 +15,7 @@ const NavBar = () => {
             Tech Times
           </Link>
         </div>
-        <div classname="nav-div flex justify-between items-center">
+        <div className="nav-div flex justify-between items-center">
           <Link
             to="/"
             className="text-black text-3xl hover:text-gray-300 font-ptsans"
