@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { updateSearchArticles } from "../redux/articleSlice";
 import "flowbite";
 
 const SearchBar = () => {
@@ -8,8 +9,8 @@ const SearchBar = () => {
   const [searchInput, setSearchInput] = useState("");
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
-  const updateSearchValue = (value) => {
-    fetch("http://localhost:3000/getNews", {
+  const updateSearchValue = async () => {
+    await fetch("http://localhost:3000/getNews", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -19,7 +20,8 @@ const SearchBar = () => {
     })
       .then((response) => response.json())
       .then((result) => {
-        result.length > 0 && dispatch(updateSearchDeck(result));
+        const articles = [...Object.values(result.articles)];
+        dispatch(updateSearchArticles(articles));
       });
     setSearchInput("");
   };
@@ -110,6 +112,7 @@ const SearchBar = () => {
             className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
             placeholder="Search by topic, source..."
             required
+            value={searchInput}
             onChange={(event) => setSearchInput(event.target.value)}
           />
           <button
