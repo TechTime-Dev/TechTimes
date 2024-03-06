@@ -11,13 +11,13 @@ const NavBar = () => {
             width="150"
             height="150"
           ></img>
-          <Link to="/" className="text-black text-6xl font-josefin">
+          <Link to="/news" className="text-black text-6xl font-josefin">
             Tech Times
           </Link>
         </div>
         <div className="nav-div flex justify-between items-center">
           <Link
-            to="/"
+            to="/news"
             className="text-black text-3xl hover:text-gray-300 font-ptsans"
           >
             News Feed
