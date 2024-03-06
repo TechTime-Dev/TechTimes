@@ -90,12 +90,12 @@ export default function ArticleCard(props) {
           className={linkClicked ? 'link clicked' : 'link'}
           onClick={handleHistory}
         >
-          Title: {props.title}
+          {props.title}
         </p>
-        <p>
-          Author: {props.author}, <i> {props.source}</i>
+        <p className='contributor'>
+          {props.author} <i> {props.source}</i>
         </p>
-        <p>Date: {props.date}</p>
+        <p>Date Published: {props.date}</p>
         <p>{props.description && <p>Description: {props.description}</p>}</p>
       </div>
     </div>
