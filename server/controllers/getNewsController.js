@@ -4,6 +4,7 @@ const date = new Date();
 const today = date.toLocaleDateString();
 
 getNewsController.getNews = async (req, res, next) => {
+
   console.log('---> ENTERING GET NEWS CONTROLLER <---');
 
   let url;
@@ -19,18 +20,19 @@ getNewsController.getNews = async (req, res, next) => {
     url = `https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=210a676b710347d48864b72c5f78bd3c`;
   }
 
+
   try {
     const response = await fetch(url);
     const data = await response.json();
     // console.log('source', data.articles[0].source.name);
-    console.log('source articles', data.articles);
+    console.log("source articles", data.articles);
     res.locals.getNews = data;
     return next();
   } catch (error) {
     return next({
-      log: 'Express error handler caught a middlware error in get news',
+      log: "Express error handler caught a middlware error in get news",
       status: 500,
-      message: { err: 'An error occured' },
+      message: { err: "An error occured" },
     });
   }
 };
