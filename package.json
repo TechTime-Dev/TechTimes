@@ -10,7 +10,6 @@
     "build": "webpack --mode production"
   },
   "jest": {
-    "rootDir": ".",
     "testEnvironment": "jest-environment-jsdom",
     "transform": {
       "^.+\\.jsx?$": "babel-jest",
