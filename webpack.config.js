@@ -34,7 +34,13 @@ export default {
       {
         test: /.(css|scss)$/,
         exclude: /node_modules/,
-        use: ["style-loader", "css-loader", "postcss-loader"],
+        // use: {
+        //   loader: ["style-loader", "css-loader", "postcss-loader"],
+        //   options: {
+        //     modules: true
+        //   },
+        // },
+         use: ["style-loader", "css-loader", "postcss-loader"]
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
@@ -51,3 +57,6 @@ export default {
     historyApiFallback: true,
   },
 };
+
+
+  // "type": "module",
