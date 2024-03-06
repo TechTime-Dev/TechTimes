@@ -22,7 +22,7 @@ getNewsController.getNews = async (req, res, next) => {
     const response = await fetch(url);
     const data = await response.json();
     // console.log('source', data.articles[0].source.name);
-    console.log("source articles", data.articles);
+    // console.log("source articles", data.articles);
     res.locals.getNews = data;
     return next();
   } catch (error) {
