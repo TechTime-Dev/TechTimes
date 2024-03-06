@@ -29,7 +29,7 @@ const SearchBar = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (searchInput !== undefined) {
-      await updateSearchValue(searchInput);
+      updateSearchValue(searchInput);
     }
   };
 
