@@ -15,9 +15,9 @@ favoriteController.add = (req, res, next) => {
     })
     .catch((error) => {
       return next({
-        log: 'Express error handler caught an middlware error in add favorite',
+        log: 'Express error handler caught an middleware error in add favorite',
         status: 500,
-        message: { err: 'An error occured' },
+        message: { err: 'An error occurred' },
       });
     });
 };
@@ -54,9 +54,9 @@ favoriteController.grab = async (req, res, next) => {
     })
     .catch((err) => {
       return next({
-        log: 'Express error handler caught a middlware error in grab favorites',
+        log: 'Express error handler caught a middleware error in grab favorites',
         status: 500,
-        message: { err: 'An error occured' },
+        message: { err: 'An error occurred' },
       })
     });
 };
