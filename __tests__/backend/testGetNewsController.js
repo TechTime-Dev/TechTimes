@@ -38,13 +38,12 @@ describe('Route integration', () => {
       return request(server).get('/notAnEndPoint').expect(404);
     });
   });
-  // describe('/getNews triggers the global error handler', () => {
-  //   test('reponds with 500 status', () => {
-  //     return request(server)
-  //       .post('/getNews')
-  //       .send({ value: { 50000000: 1 } })
-  //       .expect('Content-Type', /application\/json/)
-  //       .expect(400);
-  //   });
-  // });
+  describe('/getNews triggers the global error handler', () => {
+    test('reponds with 500 status', () => {
+      return request(server).get('/error', (req, res) => {
+        throw new Error('Test error').expect(500);
+      });
+    });
+  });
 });
+
