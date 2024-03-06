@@ -6,11 +6,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default {
-  entry: './client/index.js',
-const path = require("path");
-const HTMLWebpackPlugin = require("html-webpack-plugin");
-
-module.exports = {
   entry: "./client/index.js",
   output: {
     publicPath: "/",
