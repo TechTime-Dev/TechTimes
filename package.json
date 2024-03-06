@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --verbose",
     "start": "concurrently \"nodemon ./server/server.js\" \"webpack-dev-server --mode development --open --hot\"",
     "build": "webpack --mode production"
   },
